@@ -1,35 +1,50 @@
-const EventModel = require('../models/EventModel');
+const StoreModel = require('../models/StoreModel');
 
-class EventService {
+class StoreService {
    
-   toObject(EventModel){
-      return EventModel ? CandidateModel.toObject() : null;
+   toObject(StoreModel){
+      return StoreModel ? CandidateModel.toObject() : null;
    }
    
-   async create(eventData){
-      const elapsedTime = eventData.insideMeasure.time - eventData.outsideMeasure.time
+   async create(storeData){
+      const elapsedTime = storeData.insideMeasure.time - eventData.outsideMeasure.time
       if(elapsedTime < 0)
 
-      const Event = new CandidateModel(eventData);
+      const Store = new CandidateModel(storeData);
 
-      return this.toObject(await Event.save()) 
+      return this.toObject(await Store.save()) 
+   }
+
+   async getAll(){
+      return await StoreModel.find().lean();
    }
 
    async getQuery(query) {
-      return await EventModel.find(query).lean();
+      return await StoreModel.find(query).lean();
+   }
+
+   async getByStoreNumber({storeNumber}){
+      return await StoreModel.findOne({storeNumber}).lean();
+   }
+
+   async updateStoreByNumber(storeData){
+      const storeExists = await StoreModel.exists({storeNumber: storeData.storeNumber});
+      if(!storeExists)
+         return null
+      return await StoreModel.patchUpdate({storeNumber: storeData.storeNumber});
    }
 
    async deleteById({_id}) {
-      let eventExists = await EventModel.exists({_id});
-      if (!eventExists)
+      let storeExists = await StoreModel.exists({_id});
+      if (!storeExists)
          return null;
-      return await EventModel.deleteOne({_id});
+      return await StoreModel.deleteOne({_id});
    }
 
    async deleteAll() {
-      return await EventModel.deleteMany();
+      return await StoreModel.deleteMany();
    }
 }
 
-const eventServiceInstance = new EventService();
-module.exports = eventServiceInstance
+const storeServiceInstance = new StoreService();
+module.exports = storeServiceInstance

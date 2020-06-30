@@ -2,20 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const mongoosePatchUpdate = require('mongoose-patch-update');
-const candidateController = require('./controllers/candidateController');
-const additionalInfoController = require('./controllers/additionalInfoController');
-const roomController = require('./controllers/roomController');
-const nconf = require('nconf');
-const defaultConfig = require("./config/defaultConfig");
+const eventController = require('./controllers/eventController');
+const storeController = require('./controllers/storeController');
 const shell = require('shelljs');
 const cors = require('cors')
 const app = express();
 const morgan = require('morgan');
 //Setting up mongodb
 shell.exec('./runMongoDB.sh');
-
-//Storing constants in nconf
-nconf.defaults({store: {...defaultConfig}});
 
 //Setting-up Mongoose
 mongoose.plugin(mongoosePatchUpdate);
@@ -38,5 +32,8 @@ app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use('/store'.storeController);
+app.use('/event',eventController);
 
-app.listen(nconf.get());
+
+app.listen(5001);
