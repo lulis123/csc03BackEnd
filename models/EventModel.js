@@ -28,15 +28,6 @@ const EventSchema = new mongoose.Schema({
       description: "Classifica se foi uma entrada ou saída"
    },
 
-   insideMeasure:{
-      distance:{type:mongoose.Schema.Types.Number, required: true, description:"Medida do sensor interno à loja"},
-      time:{type:mongoose.Schema.Types.Number, required: true, description:"Tempo em segundos em que foi feito a medida"},
-   },
-   
-  outsideMeasure:{
-      distance:{type:mongoose.Schema.Types.Number, required: true, description:"Medida do sensor interno à loja"},
-      time:{type:mongoose.Schema.Types.Number, required: true, description:"Tempo em segundos em que foi feito a medida"},
-   },
    
 }, {
    timestamps: true

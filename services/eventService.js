@@ -7,11 +7,6 @@ class EventService {
    }
    
    async create(eventData){
-      const elapsedTime = eventData.insideMeasure.time - eventData.outsideMeasure.time
-      if(elapsedTime < 0)
-         eventData.eventType = "Exit";
-      else
-         eventData.eventType = "Entrance";
       const Event = new CandidateModel(eventData);
 
       return this.toObject(await Event.save()) 
