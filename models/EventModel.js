@@ -43,10 +43,10 @@ const EventSchema = new mongoose.Schema({
 });
 
 ///Index Creation
-CandidateSchema.index({createdAt: 1});
-CandidateSchema.index({eventType: 1, createdAt: 1});
-CandidateSchema.index({eventType: 1, createdAt: -1});
-CandidateSchema.index({createdAt: -1});
+EventSchema.index({createdAt: 1});
+EventSchema.index({eventType: 1, createdAt: 1});
+EventSchema.index({eventType: 1, createdAt: -1});
+EventSchema.index({createdAt: -1});
 
 //Defining Protected Attributes
 //A principio estou deixando todos protegidos (Usuário não pode mudar sua inscrição)
@@ -60,11 +60,11 @@ const sortableAttributes = [
 ];
 
 //Creating the Schema BoilerPlate
-CandidateSchema.statics.getProtectedAttributes = () => protectedAttributes;
-CandidateSchema.statics.getSortableAttributes = () => sortableAttributes;
-CandidateSchema.plugin(mongoosePaginate);
-CandidateSchema.plugin(mongoosePatchUpdate);
-CandidateSchema.plugin(autoIncrement.plugin, {
+EventSchema.statics.getProtectedAttributes = () => protectedAttributes;
+EventSchema.statics.getSortableAttributes = () => sortableAttributes;
+EventSchema.plugin(mongoosePaginate);
+EventSchema.plugin(mongoosePatchUpdate);
+EventSchema.plugin(autoIncrement.plugin, {
    model: 'Event',
    field: 'eventNumber',
    startAt: 1,

@@ -1,7 +1,7 @@
 const express = require('express');
 const storeService = require('../services/eventService');
-const router = express.Router();
 const __UNIVERSALCODE__ = "CSC03";
+const router = express.Router();
 
 
 router.get('/getAll', async(req,res,next)=>{
@@ -15,7 +15,7 @@ router.get('/getAll', async(req,res,next)=>{
       res.status(404).send();
    }
    next();
-})
+});
 
 router.post('/create', async(req,res,next)=> {
    try{
@@ -28,7 +28,7 @@ router.post('/create', async(req,res,next)=> {
       res.status(400).send();
    }
    next();
-})
+});
 
 router.post('/login', async(req,res,next)=> {
    const storeData = await storeService.getByStoreNumber(req.body);
@@ -45,7 +45,7 @@ router.post('/login', async(req,res,next)=> {
          res.status(400);send({authorization:false});
    }
    next();
-})
+});
 
 router.put('/update', async(req,res,next) => {
    try{
@@ -58,6 +58,6 @@ router.put('/update', async(req,res,next) => {
       res.status(400).send();
    }
    next();
-})
+});
 
 module.exports = router;

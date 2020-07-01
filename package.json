@@ -1,0 +1,33 @@
+{
+  "name": "csc-03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.20",
+    "mongoose-paginate-v2": "^1.3.9",
+    "mongoose-patch-update": "^1.0.6",
+    "mongoose-plugin-autoinc": "^1.1.9",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+     "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lulis123/csc03BackEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lulis123/csc03BackEnd/issues"
+  },
+  "homepage": "https://github.com/lulis123/csc03BackEnd#readme"
+}

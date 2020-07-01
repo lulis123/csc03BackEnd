@@ -2,7 +2,7 @@ const express = require('express');
 const eventService = require('../services/eventService');
 const router = express.Router();
 
-rotuer.get('/getQueryData', async (req,res,next)=> {
+router.get('/getQueryData', async (req,res,next)=> {
    try{
       const eventList = await eventService.getQueryData(req.query);
       if(eventList != null)
@@ -26,7 +26,7 @@ router.get('/getAll', async(req,res,next)=>{
       res.status(404).send();
    }
    next();
-})
+});
 
 router.post('/create', async(req,res,next)=> {
    try{
@@ -38,6 +38,6 @@ router.post('/create', async(req,res,next)=> {
    } catch(error){
       res.status(400).send();
    }
-})
+});
 
 module.exports = router;
