@@ -4,11 +4,17 @@ const mongoosePatchUpdate = require('mongoose-patch-update');
 const autoIncrement = require('mongoose-plugin-autoinc');
 
 ///Schema declaration
-const EventSchema = new mongoose.Schema({
+const StoreSchema = new mongoose.Schema({
    _id:{
       type: mongoose.Schema.Types.ObjectId,
       auto: true,
       description: "Auto generated id for the submitted form"
+   },
+   
+   storeName:{
+      type: mongoose.Schema.Types.String,
+      required: true,
+      description: "Nome da loja"
    },
 
    accessCode:{
@@ -74,4 +80,4 @@ StoreSchema.plugin(autoIncrement.plugin, {
    incrementBy: 1
 });
 
-module.exports = mongoose.model('Event',EventSchema);
+module.exports = mongoose.model('Store',StoreSchema);
