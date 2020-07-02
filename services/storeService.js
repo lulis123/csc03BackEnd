@@ -28,7 +28,7 @@ class StoreService {
       const storeExists = await StoreModel.exists({storeNumber: storeData.storeNumber});
       if(!storeExists)
          return null
-      return await StoreModel.patchUpdate({storeNumber: storeData.storeNumber});
+      return await StoreModel.patchUpdate({storeNumber: storeData.storeNumber}, storeData);
    }
 
    async deleteById({_id}) {

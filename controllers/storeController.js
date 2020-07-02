@@ -49,9 +49,9 @@ router.post('/login', async(req,res,next)=> {
 
 router.put('/update', async(req,res,next) => {
    try{
-      const updatedStore = await storeService.updateByStoreNumber(req.body);
+      const updatedStore = await storeService.updateStoreByNumber(req.body);
       if(updatedStore != null)
-         res.stautus(200).send(updatedStore);
+         res.status(200).send(updatedStore);
       else
          res.status(400).send({error: "Não foi posível fazer o update"});
    } catch(error){
