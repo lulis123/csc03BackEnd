@@ -30,7 +30,9 @@ router.get('/getAll', async(req,res,next)=>{
 
 router.post('/create', async(req,res,next)=> {
    try{
+      console.log(req.body);
       const createdEvent = await eventService.create(req.body);
+      console.log(createdEvent);
       if(createdEvent != null)
          res.status(200).json({createdEvent});
       else

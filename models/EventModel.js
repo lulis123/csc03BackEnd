@@ -14,7 +14,7 @@ const EventSchema = new mongoose.Schema({
    storeNumber:{
       type: mongoose.Schema.Types.Number,
       required: true,
-      descrpition: "Numero "
+      descrpition: "Numero da loja"
    },
 
    eventNumber:{

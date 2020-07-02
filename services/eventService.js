@@ -3,12 +3,13 @@ const EventModel = require('../models/EventModel');
 class EventService {
    
    toObject(EventModel){
-      return EventModel ? CandidateModel.toObject() : null;
+      return EventModel ? EventModel.toObject() : null;
    }
    
-   async create(eventData){
-      const Event = new CandidateModel(eventData);
-
+   async create(eventData)
+   {
+      const Event = new EventModel(eventData);
+      console.log(eventData);
       return this.toObject(await Event.save()) 
    }
 
