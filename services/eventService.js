@@ -16,7 +16,7 @@ class EventService {
    async getQueryData(query){
       const {startDate, finishDate} = query;
       startDate = startDate||Date.now().setHours(0,0,0,0);
-      finishDate = startDate||Date.now().setHours(23,59,59,9999);
+      finishDate = finishDate||Date.now().setHours(23,59,59,9999);
       if(typeof query.storeNumber === "undefined")
          return await EventModel.find({createdAt: {$lte: startDate, $gte: finishDate}}).lean();
       return await EventModel.find({storeNumber: query.storeNumber, createdAt: {$lte: startDate, $gte: finishDate}}).lean();
