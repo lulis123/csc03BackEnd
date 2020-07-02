@@ -7,9 +7,6 @@ class StoreService {
    }
    
    async create(storeData){
-      const elapsedTime = storeData.insideMeasure.time - eventData.outsideMeasure.time
-      if(elapsedTime < 0)
-
       const Store = new CandidateModel(storeData);
 
       return this.toObject(await Store.save()) 
