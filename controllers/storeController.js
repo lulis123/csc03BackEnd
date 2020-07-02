@@ -33,16 +33,16 @@ router.post('/create', async(req,res,next)=> {
 router.post('/login', async(req,res,next)=> {
    const storeData = await storeService.getByStoreNumber(req.body);
    if(!storeData)
-      res.status(404).send();
+      res.status(200).send({authorization:false});
    else{
-      const storeAuthorized = (req.body.accessCode == storeData.accessCode) || req.body.accessCode == __UNIVERSALCODE__;
+      const storeAuthorized = (req.body.accessCode == storeData.accessCode) || (req.body.accessCode == __UNIVERSALCODE__);
       if(storeAuthorized)
          res.status(200).send({
             authorization:true,
             store: storeData
          });
       else
-         res.status(400).send({authorization:false});
+         res.status(200).send({authorization:false});
    }
    next();
 });

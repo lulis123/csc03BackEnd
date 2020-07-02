@@ -17,7 +17,7 @@ router.get('/getQueryData', async (req,res,next)=> {
 
 router.get('/getAll', async(req,res,next)=>{
    try{
-      const eventlist = await eventService.getQuery();
+      const evenList = await eventService.getQuery();
       if(eventList != null)
          res.status(201).json({eventList});  
       else
