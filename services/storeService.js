@@ -3,11 +3,11 @@ const StoreModel = require('../models/StoreModel');
 class StoreService {
    
    toObject(StoreModel){
-      return StoreModel ? CandidateModel.toObject() : null;
+      return StoreModel ? StoreModel.toObject() : null;
    }
    
    async create(storeData){
-      const Store = new CandidateModel(storeData);
+      const Store = new StoreModel(storeData);
 
       return this.toObject(await Store.save()) 
    }

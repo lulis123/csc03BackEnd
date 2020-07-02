@@ -1,12 +1,12 @@
 const express = require('express');
-const storeService = require('../services/eventService');
+const storeService = require('../services/storeService');
 const __UNIVERSALCODE__ = "CSC03";
 const router = express.Router();
 
 
 router.get('/getAll', async(req,res,next)=>{
    try{
-      const storeList = await eventService.getQuery();
+      const storeList = await storeService.getQuery();
       if(storeList != null)
          res.status(201).json({storeList});  
       else
@@ -35,14 +35,14 @@ router.post('/login', async(req,res,next)=> {
    if(!storeData)
       res.status(404).send();
    else{
-      const storeAuthorized = (req.body.accesCode == storeData.accessCode) || req.body.accessCode == __UNIVERSALCODE__;
+      const storeAuthorized = (req.body.accessCode == storeData.accessCode) || req.body.accessCode == __UNIVERSALCODE__;
       if(storeAuthorized)
          res.status(200).send({
             authorization:true,
             store: storeData
          });
       else
-         res.status(400);send({authorization:false});
+         res.status(400).send({authorization:false});
    }
    next();
 });
@@ -53,7 +53,7 @@ router.put('/update', async(req,res,next) => {
       if(updatedStore != null)
          res.stautus(200).send(updatedStore);
       else
-         res.status(400);send({error: "Não foi posível fazer o update"});
+         res.status(400).send({error: "Não foi posível fazer o update"});
    } catch(error){
       res.status(400).send();
    }
