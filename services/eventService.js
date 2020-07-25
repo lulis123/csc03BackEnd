@@ -6,20 +6,19 @@ class EventService {
       return EventModel ? EventModel.toObject() : null;
    }
    
-   async create(eventData)
-   {
+   async create(eventData){
       const Event = new EventModel(eventData);
-      console.log(eventData);
+
       return this.toObject(await Event.save()) 
    }
 
    async getQueryData(query){
       const {startDate, finishDate} = query;
-      startDate = startDate||Date.now().setHours(0,0,0,0);
-      finishDate = finishDate||Date.now().setHours(23,59,59,9999);
+      //startDate = startDate||Date.now().setHours(0,0,0,0);
+      //finishDate = finishDate||Date.now().setHours(23,59,59,9999);
       if(typeof query.storeNumber === "undefined")
-         return await EventModel.find({createdAt: {$lte: startDate, $gte: finishDate}}).lean();
-      return await EventModel.find({storeNumber: query.storeNumber, createdAt: {$lte: startDate, $gte: finishDate}}).lean();
+         return await EventModel.find({createdAt: {$lte: finishDate, $gte: startDate}}).lean();
+      return await EventModel.find({storeNumber: query.storeNumber, createdAt: {$lte: finishDate, $gte: startDate}}).lean();
    }
 
    async getQuery(query) {

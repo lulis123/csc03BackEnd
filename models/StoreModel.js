@@ -25,7 +25,7 @@ const StoreSchema = new mongoose.Schema({
 
    storeNumber:{
       type: mongoose.Schema.Types.Number,
-      required: true,
+      required: false,
       descrpition: "Numero da loja"
    },
 
@@ -76,7 +76,7 @@ StoreSchema.plugin(mongoosePatchUpdate);
 StoreSchema.plugin(autoIncrement.plugin, {
    model: 'Event',
    field: 'storeNumber',
-   startAt: 8000,
+   startAt: 0,
    incrementBy: 1
 });
 
