@@ -13,7 +13,7 @@
     "mongoose-plugin-autoinc": "^1.1.9",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {},
   "scripts": {
